@@ -219,4 +219,23 @@ public class Aluno extends Pessoa {
 				+ ", nome Pai: " + nomePai + ", data Matricula: " + dataMatricula + ", nome Escola: " + nomeEscola
 				+ ", serie Matriculada: " + serieMatriculada + ",\n disciplinas: " + disciplinas + "]";
 	}
+	
+	/*identifica método sobreescrito, pode-se fazer a implementação que for necessario até mudar a regra de negocio*/
+	@Override
+	public boolean pessoaMaiorIdade() {		
+		//return super.pessoaMaiorIdade();
+		return idade >= 21;
+	}
+	
+	public String msgMaiorIdade() {
+		return this.pessoaMaiorIdade() ? "Já é maior de idade" : "Ainda é de menor";
+	}
+	
+	//implementando método abstrato(obrigatório)
+	@Override
+	public double salario() {
+		return 1500;
+	}
+	
+	
 }

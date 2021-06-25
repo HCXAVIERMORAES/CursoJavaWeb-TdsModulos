@@ -1,5 +1,5 @@
 package cursojava.classes;
-
+//classe filha de pessoa
 public class Secretario extends Pessoa{
 	
 	private String registro;
@@ -24,6 +24,19 @@ public class Secretario extends Pessoa{
 	}
 	public void setExperiencia(String experiencia) {
 		this.experiencia = experiencia;
+	}
+	
+	@Override
+	public String toString() {
+		return "Secretario [registro: " + registro + ", nivel Cargo: " + nivelCargo + ", experiencia: " + experiencia
+				+ "\n, nome: " + nome + ", idade: " + idade + ", data Nascimento: " + dataNascimento + ",\n registro Geral:"
+				+ registroGeral + ", numero Cpf: " + numeroCpf + ", nome Mae: " + nomeMae + ", nome Pai:" + nomePai + "]";
+	}
+	
+	//implementando método abstrato(obrigatório)
+	@Override
+	public double salario() {
+		return 1880 * 0.9;
 	}
 	
 	

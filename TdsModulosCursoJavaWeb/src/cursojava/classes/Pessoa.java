@@ -1,6 +1,7 @@
 package cursojava.classes;
 
-public class Pessoa {//superclasse
+//abstract evita que a classe se instanciada
+public abstract class Pessoa {//superclasse, classe master ou superclasse - (Atributos comuns a todos os objetos filhos)
 	
 	protected String nome;
 	protected  int idade;
@@ -9,6 +10,9 @@ public class Pessoa {//superclasse
 	protected  String numeroCpf;
 	protected  String nomeMae;
 	protected  String nomePai;
+	
+	/*metodo abstrato é obrigatorio ser implementado pelas classes filhas ou dará erro de compilação*/
+	public abstract double salario();
 	
 	//get e set
 	public String getNome() {
@@ -54,6 +58,9 @@ public class Pessoa {//superclasse
 		this.nomePai = nomePai;
 	}
 	
-	
+	//retorna true se for >= a 18 e false se menor
+	public boolean pessoaMaiorIdade() {
+		return idade >= 18;
+	}
 	
 }
