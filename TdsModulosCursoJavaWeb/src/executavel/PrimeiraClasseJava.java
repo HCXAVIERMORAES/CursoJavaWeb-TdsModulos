@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import constante.StatusAluno;
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
+import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
 
@@ -16,8 +18,20 @@ public class PrimeiraClasseJava {
 		// validação de acesso simples
 				String login = JOptionPane.showInputDialog("Qual o seu login? ");
 				String senha = JOptionPane.showInputDialog("Qual o seu senha? ");
-
-				if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+				
+				//Secretario secretario = new Secretario();//1ª metodo. trab. diretamente com o objeto				
+				/*secretario.setLogin(login);
+				secretario.setSenha(senha);*/
+				
+				//2ª metodo, mais forte e com parâmetro instanciando a classe
+				//PermitirAcesso secretario = new Secretario(); ou				
+				/*if(secretario.autenticar(login,senha)) {autenticacão se true. classe interface*/
+				//if(new Secretario().autenticar(login,senha)) {
+				//interfaces e construtores
+				PermitirAcesso permitirAcesso = new Secretario(login,senha);
+					
+				if(permitirAcesso.autenticar()) {//menos codigo. 3ª trava, só quem tem 100% do contrato 
+				/*if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {*/
 
 					/* Aplicando a lista em aluno */
 					List<Aluno> alunos = new ArrayList<Aluno>();
@@ -129,6 +143,8 @@ public class PrimeiraClasseJava {
 								+ ", média: " + aluno.getMediaNota());
 					}
 
-				} // fim validação
+				} else {
+					JOptionPane.showMessageDialog(null,"Acesso NEGADO");
+				}// fim validação
 	}
 }

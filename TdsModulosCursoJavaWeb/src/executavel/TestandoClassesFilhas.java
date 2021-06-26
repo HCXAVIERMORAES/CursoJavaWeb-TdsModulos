@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Diretor;
+import cursojava.classes.Pessoa;
 import cursojava.classes.Secretario;
 
 public class TestandoClassesFilhas {
@@ -19,11 +20,13 @@ public class TestandoClassesFilhas {
 		//diretor.setRegistroGeral(JOptionPane.showInputDialog("registro geral: "));
 		//diretor.setNome(JOptionPane.showInputDialog("Nome do diretor: "));
 		diretor.setIdade(50);
+		diretor.setNome("Mario");
 		
 		Secretario secretario = new Secretario();
 		//secretario.setExperiencia(JOptionPane.showInputDialog("Qual a esperiencia:" ));
 		//secretario.setNumeroCpf(JOptionPane.showInputDialog("Qual o CPF:" ));
 		diretor.setIdade(18);
+		secretario.setNome("Bruno");
 		
 		System.out.println(aluno);
 		System.out.println(diretor);
@@ -36,5 +39,16 @@ public class TestandoClassesFilhas {
 		System.out.println("O salario do aluno é: " +aluno.salario());
 		System.out.println("O salario do diretor é: " + diretor.salario());
 		System.out.println("O salario do secretário é: " + secretario.salario());
+		
+		//chamando o metodo
+		teste(aluno);
+		teste(diretor);
+		teste(secretario);
+		
+	}
+	
+	//mais de polimorfismo. metodo statico devido ao main tbm ser
+	public static void teste(Pessoa pessoa) {
+		System.out.println("Esta pessoa é demais: "+ pessoa.getNome() + "e o seu salario é: "+pessoa.salario());
 	}
 }
