@@ -26,7 +26,7 @@ public class PrimeiraClasseJava {
 	try {
 		
 	//usando a classe de exceção
-	lerArquivo();
+	//lerArquivo();
 	
 	// validação de acesso simples
 			String login = JOptionPane.showInputDialog("Qual o seu login? ");
