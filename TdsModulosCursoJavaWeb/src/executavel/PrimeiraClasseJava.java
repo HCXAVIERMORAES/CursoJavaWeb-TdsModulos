@@ -1,8 +1,11 @@
 package executavel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -12,6 +15,7 @@ import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
 import cursojava.classesauxiliares.FuncaoAutenticacao;
+import cursojava.excecao.excecaoProcessarNota;
 import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
@@ -21,6 +25,9 @@ public class PrimeiraClasseJava {
 /*usando um tratamento de exceção*/
 	try {
 		
+	//usando a classe de exceção
+	lerArquivo();
+	
 	// validação de acesso simples
 			String login = JOptionPane.showInputDialog("Qual o seu login? ");
 			String senha = JOptionPane.showInputDialog("Qual o seu senha? ");
@@ -28,7 +35,7 @@ public class PrimeiraClasseJava {
 	//reduzindo para uma linha
 	if(new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) {
 		
-	//para dietor
+	//para diretor
 	//if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
 	
 
@@ -147,11 +154,51 @@ public class PrimeiraClasseJava {
 		JOptionPane.showMessageDialog(null,"Acesso NEGADO");
 	}// fim validação
 	
-	} catch (Exception e) {
+	} catch (NumberFormatException e) {///m/multiplos catchs de exceções
+		//personalizando a mensagem
+		StringBuilder saida = new StringBuilder();
+		
 		e.printStackTrace();//imprimie a erro no console
-		JOptionPane.showMessageDialog(null,"Erro ao processar notas");//sempre informar o usuario quqndo houver erros
-	}//fim try catch
+		System.out.println("Mensagem "+ e.getMessage());//msg de erro ou causa
+		 
+		//usando um for para varrer o array de printStackTrace()
+		for(int i = 0; i < e.getStackTrace().length; i++) {
+			saida.append("\nClasse do erro: "+ e.getStackTrace()[i].getClassName());
+			saida.append("\nMétodo do erro: "+ e.getStackTrace()[i].getMethodName());
+			saida.append("\nLinha do erro: "+ e.getStackTrace()[i].getLineNumber());
+			saida.append("\nClasse: "+ e.getClass().getName());	
+		}
+		
+		JOptionPane.showMessageDialog(null," Erro de conversao de número" + saida.toString());//sempre informar o usuario quqndo houver erros
+	} catch (NullPointerException e) {
+		JOptionPane.showMessageDialog(null," erro de Null point exception" + e.getClass());
+		
+	} catch (excecaoProcessarNota e) {//capturar todas as exceções que não prevemos
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(null," Erro da exceção custamizada: " + e.getClass().getName());
+		
+	}catch (Exception e) {//capturar todas as exceções que não prevemos
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(null," Erro inesperado: " + e.getClass().getName());
+		
+	} finally {//sempre será executado dendo ou não erro
+		JOptionPane.showInternalMessageDialog(null,"FInal do try catch finally- finally não é obrigatorio");
+		/*fechar transação em um banco de dados*/
+	} //fim try catch
 	
 }//fim main
 	
+	//função que usa a classe custamizada
+	public static void lerArquivo() throws excecaoProcessarNota {// throws excecaoProcessarNota lança para quem chama a exceção
+		try {
+			File fil = new File("c://lines.txt");
+			Scanner scanner = new Scanner(fil);		
+		}catch(FileNotFoundException e){
+			throw new excecaoProcessarNota(e.getMessage());
+		}
+	
 }
+
+
+}
+
