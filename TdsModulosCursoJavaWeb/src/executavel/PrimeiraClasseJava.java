@@ -20,6 +20,7 @@ public class PrimeiraClasseJava {
 		
 /*usando um tratamento de exceção*/
 	try {
+		
 	// validação de acesso simples
 			String login = JOptionPane.showInputDialog("Qual o seu login? ");
 			String senha = JOptionPane.showInputDialog("Qual o seu senha? ");
