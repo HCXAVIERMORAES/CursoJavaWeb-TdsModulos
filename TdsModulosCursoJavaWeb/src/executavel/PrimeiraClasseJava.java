@@ -17,53 +17,28 @@ import cursojava.interfaces.PermitirAcesso;
 public class PrimeiraClasseJava {
 
 	public static void main(String[] args) {
-		// validação de acesso simples
-				String login = JOptionPane.showInputDialog("Qual o seu login? ");
-				String senha = JOptionPane.showInputDialog("Qual o seu senha? ");
 		
-		//Secretario secretario = new Secretario();//1ª metodo. trab. diretamente com o objeto				
-		/*secretario.setLogin(login);
-		secretario.setSenha(senha);*/
-				
-	//2ª metodo, mais forte e com parâmetro instanciando a classe
-	//PermitirAcesso secretario = new Secretario(); ou				
-	/*if(secretario.autenticar(login,senha)) {autenticacão se true. classe interface*/
-	//if(new Secretario().autenticar(login,senha)) {
-	/*interfaces e construtores
-	PermitirAcesso permitirAcesso = new Secretario(login,senha);*/
+/*usando um tratamento de exceção*/
+	try {
+	// validação de acesso simples
+			String login = JOptionPane.showInputDialog("Qual o seu login? ");
+			String senha = JOptionPane.showInputDialog("Qual o seu senha? ");
 	
-	//usando a função de altenticacão  da classe
-	//FuncaoAutenticacao autenticacao = new FuncaoAutenticacao();
-	
-	//instanciar a classe PermitirAcesso com o objeto(classe) que tem acesso, ou seja, PermitirAcesso do tipo
-	//secretario
-	//PermitirAcesso permitirAcesso = new Secretario(login , senha);//deixando tudo em 1 linha
-		
-	//if(permitirAcesso.autenticar()) {//menos codigo. 3ª trava, só quem tem 100% do contrato 
-	/*if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {*/
-	
-	//if da classe criada para autenticar o contrato
-	//if(autenticacao.autenticarCursoJava(permitirAcesso)) {//travar o contrato para auteenticação de permição
-		 
-	//deixando mais amarrado
-		//if(new FuncaoAutenticacao(permitirAcesso).autenticarCursoJava(permitirAcesso)) {
-	//final
-	//if(new FuncaoAutenticacao(permitirAcesso).autenticar()) { passa para uma liinha
-		
 	//reduzindo para uma linha
-	//if(new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) {
+	if(new FuncaoAutenticacao(new Secretario(login, senha)).autenticar()) {
 		
 	//para dietor
-	if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
+	//if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
 	
 
 		/* Aplicando a lista em aluno */
 		List<Aluno> alunos = new ArrayList<Aluno>();
+		//List<Aluno> alunos = null;//simulando erro
 
 		HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
 
-		for (int qtd = 1; qtd <= 1; qtd++) { // percorrendo lista de alunos
+		for (int qtd = 1; qtd <= 2; qtd++) { // percorrendo lista de alunos
 
 			String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ? ");
 			// String idade = JOptionPane.showInputDialog("Qual a idade do aluno? ");
@@ -170,6 +145,12 @@ public class PrimeiraClasseJava {
 	} else {
 		JOptionPane.showMessageDialog(null,"Acesso NEGADO");
 	}// fim validação
+	
+	} catch (Exception e) {
+		e.printStackTrace();//imprimie a erro no console
+		JOptionPane.showMessageDialog(null,"Erro ao processar notas");//sempre informar o usuario quqndo houver erros
+	}//fim try catch
+	
 }//fim main
 	
 }
