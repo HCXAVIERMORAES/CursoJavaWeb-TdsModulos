@@ -26,7 +26,7 @@ public class PrimeiraClasseJava {
 	try {
 		
 	//usando a classe de exceção
-	//lerArquivo();
+	lerArquivo();
 	
 	// validação de acesso simples
 			String login = JOptionPane.showInputDialog("Qual o seu login? ");
@@ -191,14 +191,12 @@ public class PrimeiraClasseJava {
 	//função que usa a classe custamizada
 	public static void lerArquivo() throws excecaoProcessarNota {// throws excecaoProcessarNota lança para quem chama a exceção
 		try {
-			File fil = new File("c://lines.txt");
+			File fil = new File("C:\\Users\\hphoe\\OneDrive\\Documentos\\lines.txt");
 			Scanner scanner = new Scanner(fil);		
 		}catch(FileNotFoundException e){
 			throw new excecaoProcessarNota(e.getMessage());
-		}
-	
+		}	
 }
-
 
 }
 
