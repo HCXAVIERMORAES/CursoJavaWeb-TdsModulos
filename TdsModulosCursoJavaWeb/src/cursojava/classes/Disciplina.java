@@ -1,21 +1,26 @@
 package cursojava.classes;
 
+import java.util.Arrays;
+
 public class Disciplina {
-	
-	private Double nota;
+	/*Regra de negocio: cada disciplina terá 4 notas o ano inteiro*/
+	//transformando notas em um array
+	private Double[] nota = new Double[4];
 	private String disciplina;
 
 	// get set
-	public Double getNota() {
-		return nota;
-	}
-
-	public void setNota(Double nota) {
-		this.nota = nota;
-	}
+		
 
 	public String getDisciplina() {
 		return disciplina;
+	}
+
+	public Double[] getNota() {
+		return nota;
+	}
+
+	public void setNota(Double[] nota) {
+		this.nota = nota;
 	}
 
 	public void setDisciplina(String disciplina) {
@@ -23,12 +28,13 @@ public class Disciplina {
 	}
 
 	// equal e hashcode
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((disciplina == null) ? 0 : disciplina.hashCode());
-		result = prime * result + ((nota == null) ? 0 : nota.hashCode());
+		result = prime * result + Arrays.hashCode(nota);
 		return result;
 	}
 
@@ -46,19 +52,26 @@ public class Disciplina {
 				return false;
 		} else if (!disciplina.equals(other.disciplina))
 			return false;
-		if (nota == null) {
-			if (other.nota != null)
-				return false;
-		} else if (!nota.equals(other.nota))
+		if (!Arrays.equals(nota, other.nota))
 			return false;
 		return true;
 	}
 
-	// toString
+	//to String
 	@Override
 	public String toString() {
-		return "\nDisciplina [disciplina : "+ disciplina + ", nota= " + nota + "]";
+		return "Disciplina [\nnota: " + Arrays.toString(nota) + ", disciplina: " + disciplina + "]";
 	}
+	
+	//metodo que retorna a média das notas para arrumar a classe Aluno
+	public Double getMediaNotas() {
+		Double somaTotal = 0.0;
+		for (int i = 0; i < nota.length; i++) {
+			somaTotal+= nota[i];
+		}		
+		return somaTotal / nota.length; //ou 4 que seria o tamanho do array
+	}
+	
 
 	
 

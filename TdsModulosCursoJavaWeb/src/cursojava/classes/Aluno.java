@@ -142,7 +142,7 @@ public class Aluno extends Pessoa {
 		Double somaNotas = 0.0;
 		// usando um forEacht
 		for (Disciplina disciplina : disciplinas) {
-			somaNotas += disciplina.getNota();
+			somaNotas += disciplina.getMediaNotas();//substitui somaNotas += disciplina.getNotas();
 		}
 		return somaNotas / disciplinas.size();
 	}
