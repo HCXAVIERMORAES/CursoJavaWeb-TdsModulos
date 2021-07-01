@@ -59,7 +59,8 @@ public class ArrayVetor {
 		disciplina2.setNota(notaslogica);//lançando as notas
 		
 		aluno.getDisciplinas().add(disciplina2);
-		
+		/**********************************************************************************************/
+		/* desccartando o código para trabalhar com manipulação de array de objeto
 		//varrendo e imprimindo 
 		System.out.println("****Aluno: "+aluno.getNome()+"********** Inscrito no curso: "+aluno.getNomeEscola()+" ************************");
 		System.out.println("--------------------Disciplina do Aluno----------------------------------");
@@ -88,7 +89,7 @@ public class ArrayVetor {
 				if(i == 0) {
 					maiorNota = disc.getNota()[i];
 				} else {
-					if(disc.getNota()[i] > maiorNota) {
+					if(disc.getNota()[i] > maiorNota) {//para menor nota inverter o sinal para '<'
 						maiorNota = disc.getNota()[i];
 					}
 				}//fim metodo2	maior nota			
@@ -100,6 +101,30 @@ public class ArrayVetor {
 			System.out.println("método2 maior nota: "+ maiorNota);
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
 		}//fim for de disciplinas
+		*/
+		
+		//criando uma array que recebera o objeto aluno
+		Aluno[] arrayAluno  = new Aluno[1];
+		arrayAluno[0] = aluno;
+		//varrendo o array
+		for (int pos = 0; pos < arrayAluno.length; pos++) {
+			System.out.println("O nome do aluno é: "+ arrayAluno[pos].getNome());
+			
+			/*nome das disciplinas que estão dentro do arrayAluno, usando um foreach*/
+			for (Disciplina disc : arrayAluno[pos].getDisciplinas()) {//recuperar as disciplinas do arrayAluno,na
+				//posição do aluno, ou seja 1ª posição.
+				int n=0;
+				System.out.println("o nome da disciplina: "+disc.getDisciplina());	
+				
+				//recuperando notas das disciplinas do aluno
+				for (int posnota = 0; posnota < disc.getNota().length; posnota++) {
+					System.out.println("A "+(posnota+1) + " nota é: "+ disc.getNota()[posnota]);
+				}//for notas dentro da lista de disciplina
+				
+			}//for de disciplina	
+			
+		}//fim for arrayAluno,podi-se adicionara mais alunos e disciplinas que o codig	o é o mesmo
+		
 	}
 
 	
