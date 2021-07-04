@@ -37,9 +37,9 @@ public class TelaTimeThread extends JDialog{
 		@Override
 		public void run() {
 			// a thread vai ficar rodando a data e hora ate ser morta
-			while(true) {
-				/*no 1ª campo de texto setar o texto(iniciar o formatador de data(padrao a ser usado).(pegara o q for
-				 * passado e retornar para o text)*/
+			while(true) {//sempre fica rodando ate ser morto
+				/*no 1ª campo de texto setar o texto(iniciar o formatador de data(padrao a ser usado).(pegara 
+				 * o q for passado e retornar para o text)*/
 				mostraTempo.setText(new SimpleDateFormat("dd/MM/yyyy  hh:mm.ss").
 						format(Calendar.getInstance().getTime()));
 				
@@ -53,8 +53,28 @@ public class TelaTimeThread extends JDialog{
 		}//fim void run
 	};//fim Runnable
 	
+	//thread2
+private Runnable thread2 = new Runnable() {
+		
+		@Override
+		public void run() {
+			
+			while(true) {
+				mostraTempo2.setText(new SimpleDateFormat("dd-MM-yyyy  hh:mm:ss").
+						format(Calendar.getInstance().getTime()));
+				
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}//fim while
+		}//fim void run
+	};//fim Runnable
+	
 	//criando o objeto thread
 	private Thread thread1Time;
+	private Thread thread2Time;
 	
 	/*construtor ficará a data, horas, etc, usando as thread para tal*/
 	public TelaTimeThread() {//executa o que estiver dentro no momento da abertura ou execução
@@ -111,23 +131,37 @@ public class TelaTimeThread extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// executa o click do botao
+				// executa o click no botao
 				thread1Time = new Thread(thread1);
 				thread1Time.start();
+				
+				thread2Time = new Thread(thread2);
+				thread2Time.start();
+				
+				//habilitando e desabilitando botões
+				btnStart.setEnabled(false);
+				btnStop.setEnabled(true);
 				
 			}
 		});//fim btnStart
 		
 		btnStop.addActionListener(new ActionListener() {
 			
-			@SuppressWarnings("deprecation")
+			@SuppressWarnings({ "deprecation" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				thread1Time.stop();
+				thread2Time.stop();
+				
+				btnStart.setEnabled(true);
+				btnStop.setEnabled(false);
 				
 			}
 		});//fim btnStop
+		
+		//desbilitando o stop ao abrir a tela
+		btnStop.setEnabled(false);
 		
 		
 		add(jPanel, BorderLayout.WEST); //adiconando o painel no Dialog
