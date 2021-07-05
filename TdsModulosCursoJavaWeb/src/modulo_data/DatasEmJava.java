@@ -50,7 +50,7 @@ public class DatasEmJava {
 		simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		//deve colocar uma exceção para ser uzado o parse
 		System.out.println("Convertendo para objeto do tipo Date: "+ simpleDateFormat.parse("14-01-1978"));
-		
+				
 	}
 
 }
