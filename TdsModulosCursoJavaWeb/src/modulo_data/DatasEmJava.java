@@ -11,10 +11,12 @@ public class DatasEmJava {
 		//Trabalhando com datas
 		
 		//classe Calendar
+		@SuppressWarnings("unused")
 		Calendar calendar = Calendar.getInstance();
 		
+		@SuppressWarnings("unused")
 		Date date = new Date();
-		
+				
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		
 		Date dataVencBoleto = simpleDateFormat.parse("12/07/2021");
