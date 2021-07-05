@@ -89,12 +89,22 @@ public class Tela2TimeThread extends JDialog{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/*adicionando o evento e pegando os campos digitados*/
-					ObjetoFilaThread filaThread = new ObjetoFilaThread();//cria objeto
-					filaThread.setNome(mostraTempo.getText());//pega o que foi digitado no textfield
-					filaThread.setEmail(mostraTempo2.getText());
+					//verificação
+					if(fila== null) {
+						fila = new ImplementacaoFilaThread();//cria novo objeto
+						fila.start();//inicia a thread
+					}
+					//simulando 10 envio de email em massa
+					for(int qtd = 0; qtd < 10; qtd++) {
+						/*adicionando o evento e pegando os campos digitados*/
+						ObjetoFilaThread filaThread = new ObjetoFilaThread();//cria objeto
+						filaThread.setNome(mostraTempo.getText());//pega o que foi digitado no textfield
+						filaThread.setEmail(mostraTempo2.getText()+"- "+qtd);
+						
+						fila.add(filaThread);//adiciona o objeto na fila
+					}//fim for
 					
-					fila.add(filaThread);//adiciona o objeto na fila
+					btnStop.setEnabled(true);//habilitar
 				}
 			});//fim btnStart
 			
@@ -104,6 +114,9 @@ public class Tela2TimeThread extends JDialog{
 				public void actionPerformed(ActionEvent e) {
 					
 					fila.stop();
+					fila = null;//retira o objeto
+					
+					btnStop.setEnabled(false);//desabilitar
 				}
 			});//fim btnStop	
 			
