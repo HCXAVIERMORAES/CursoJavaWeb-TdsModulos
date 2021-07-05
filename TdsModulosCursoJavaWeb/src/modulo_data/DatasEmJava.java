@@ -15,42 +15,24 @@ public class DatasEmJava {
 		
 		Date date = new Date();
 		
-		System.out.println("Data em milisegundos: "+ date.getTime());
-		System.out.println("Calender em milisegundos: "+ calendar.getTimeInMillis());
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		
-		System.out.println("Dia do mes: "+ date.getDate());
-		System.out.println("Calender dia do mês: "+ calendar.get(calendar.DAY_OF_MONTH));
+		Date dataVencBoleto = simpleDateFormat.parse("12/07/2021");
+		Date dataAtual = simpleDateFormat.parse("11/07/2021");
 		
-		System.out.println("Dia da semana: "+ date.getDay());//0= domingo, 1=segunda ... ate 6=sabado
-		System.out.println("Calender dia da semana: "+ (calendar.get(calendar.DAY_OF_WEEK)- 1));
-		
-		System.out.println("Hora do dia "+ date.getHours());
-		System.out.println("Calender hora do dia: "+ calendar.get(calendar.HOUR_OF_DAY));
-		
-		System.out.println("Minuto da hora: "+ date.getMinutes());
-		System.out.println("Calender minuta da hora: "+ calendar.get(calendar.MINUTE));
-		
-		System.out.println("Segundos: "+ date.getSeconds());
-		System.out.println("Calender segundos: "+ calendar.get(calendar.SECOND));
-		System.out.println("Ano: "+ (date.getYear() + 1900));//tem como base o ano de 1900. Retorna resultado da
-		// do ano vigente - 1900
-		System.out.println("Calender anos: "+ calendar.get(calendar.YEAR));
-		//---------------SIMPLE DATE FORMAT----------------------------------
-		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyy");//M sempre maiusculo
-		System.out.println("data atual em formato padrão e String: " + simpleDateFormat.format(date));
-		System.out.println("Calendar data atual em formato padrão e String: " + 
-		simpleDateFormat.format(calendar.getTime()));
-		
-		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm.ss");//.SS centesimos de segundos
-		System.out.println("Data em formato para Banco de Dados: "+ simpleDateFormat.format(date));
-		System.out.println("Data em formato para Banco de Dados: "+ 
-		simpleDateFormat.format(calendar.getTime()));
-		
-		simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		//deve colocar uma exceção para ser uzado o parse
-		System.out.println("Convertendo para objeto do tipo Date: "+ simpleDateFormat.parse("14-01-1978"));
-				
-	}
+		//Se a data 1 é maior que a data 2
+		if(dataVencBoleto.after(dataAtual)) {// posterior ou maior ou depois da data atual
+			System.out.println("Boleto não vencido");
+		} else {
+			System.out.println("Boleto vencido -UGENTE");
+		}
+	
+	//Se a data 1 é maior que a data 2
+			if(dataVencBoleto.before(dataAtual)) {// se a data 1 é menor ou igual a data 2
+				System.out.println("Boleto vencido -UGENTE");
+			} else {
+				System.out.println("Boleto não vencido");
+			}
+		}
 
 }
