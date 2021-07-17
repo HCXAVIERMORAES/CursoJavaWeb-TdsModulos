@@ -33,7 +33,8 @@ public class Arquivos {
 		pessoas.add(pessoa3);		
 		
 		// trabalhando com arquivos txt, excel
-		File arquivo = new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb\\src\\modulo16\\arquivo\\arquivo.txt");
+		File arquivo = new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb"
+				+ "\\src\\modulo16\\arquivo\\arquivo.csv");
 		//condição de existencia
 			if(!arquivo.exists()) {//se não existir
 				arquivo.createNewFile();//cria o arqquivo

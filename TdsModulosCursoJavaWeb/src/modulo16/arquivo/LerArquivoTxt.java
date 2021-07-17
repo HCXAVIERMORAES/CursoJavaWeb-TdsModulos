@@ -12,12 +12,18 @@ public class LerArquivoTxt {
 	public static void main(String[] args) throws FileNotFoundException {
 		/*
 		 * como ler arquivo txt. usando o FileInputStream -entrada de dados - recebe um
-		 * file(endereço do arquivo que se quer ler. new FileInputStream(new
-		 * File("caminho") -incial o arquivo (new file)-
+		 * file(endereço do arquivo que se quer ler. new FileInputStream(new File("caminho") -incial
+		 *  o arquivo (new file)- Para arquivo em excel mudar apena a estensão p/ .csv
 		 */
+	/*	FileInputStream entradaArquivo = new FileInputStream(
+				new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb\\"
+						+ "src\\modulo16\\arquivo\\arquivo.txt"));*/
+		
+		//lendo arquivo em execl ou planilha
 		FileInputStream entradaArquivo = new FileInputStream(
 				new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb\\"
 						+ "src\\modulo16\\arquivo\\arquivo.txt"));
+		
 
 		// usa-se a classe Scanner para ler as linhas e um while
 		Scanner lerArquivo = new Scanner(entradaArquivo, "UTF-8");
@@ -46,8 +52,8 @@ public class LerArquivoTxt {
 				//estrutura igual ao arquivo
 				pessoa.setNome(dados[0]);
 				pessoa.setEmail(dados[1]);
-				pessoa.setIdade(dados[2]);
-				//pessoa.setIdade(Integer.parseInt(dados[2]));
+				pessoa.setIdade(dados[2]);//idade do tipo String
+				//pessoa.setIdade(Integer.parseInt(dados[2]));//conversão para inteiro
 				
 				//adicionando na lista
 				pessoas.add(pessoa);
