@@ -33,6 +33,10 @@ public class Arquivos {
 		pessoas.add(pessoa3);		
 		
 		// trabalhando com arquivos txt, excel
+		/*File arquivo = new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb"
+				+ "\\src\\modulo16\\arquivo\\arquivo.txt");*/
+		
+		//para planilhas é só mudar a estensão para .csv, o restante do código não muda
 		File arquivo = new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb"
 				+ "\\src\\modulo16\\arquivo\\arquivo.csv");
 		//condição de existencia
