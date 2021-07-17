@@ -1,6 +1,6 @@
+Jose; pessoa1@gmail.com; 38 
+Ana; pessoa2@gmail.com; 18 
+Marcos; pessoa3@gmail.com; 30 
 
-Varrendo a lista e salvando no arquivo com um foreach
-Jose; pessoa1@gmail.com; 48 
- Ana; pessoa2@gmail.com; 18 
- Marcos; pessoa3@gmail.com; 30 
+Paulo; pessoa4@gmail.com; 50 
  
