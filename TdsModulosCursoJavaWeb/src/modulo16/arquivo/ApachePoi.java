@@ -81,7 +81,7 @@ public class ApachePoi {
 		hssfWorkbook.write(saida);//escreve planilha em arquivo
 		saida.flush();
 		saida.close();
-		
+		hssfWorkbook.close();
 		System.out.println("Planilha criada");
 
 	}
