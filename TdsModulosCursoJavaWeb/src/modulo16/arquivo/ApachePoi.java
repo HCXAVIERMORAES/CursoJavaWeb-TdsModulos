@@ -1,6 +1,7 @@
 package modulo16.arquivo;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ApachePoi {
 		
 		//criando arquivo
 		File file = new File("C:\\Users\\hphoe\\git\\repository5\\.git\\TdsModulosCursoJavaWeb"
-				+ "\\src\\modulo16\\arquivo");// endereço de onde vaificar o arquivo a ser criado
+				+ "\\src\\modulo16\\arquivo_excel.xls");// endereço de onde vaificar o arquivo a ser criado
 		
 		if(!file.exists()) {
 			file.createNewFile();
@@ -48,7 +49,7 @@ public class ApachePoi {
 		pessoas.add(pessoa2);
 		pessoas.add(pessoa3);
 		
-		//usado para escrever na planilha
+		//usado para escrever a planilha
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
 		
 		//criar a planilha
@@ -62,11 +63,26 @@ public class ApachePoi {
 			Row linha = linhasPessoa.createRow(numeroLinhas++); //criando a linha na planilha
 			
 			//controlando celula
-			int celula = 0;
+			int celula = 0;// varaiavel de controle
 			
-			Cell celNome = linha.createCell(celula ++);// varaiavel de controle
-;			
-		}
+			//criando as celulas, uma para cada atributo
+			Cell celNome = linha.createCell(celula ++);//celula 1
+			celNome.setCellValue(p.getNome());//passa o nome da pessoa
+			
+			Cell celEmail = linha.createCell(celula++);
+			celEmail.setCellValue(p.getEmail());
+			
+			Cell celIdade = linha.createCell(celula++);
+			celIdade.setCellValue(p.getIdade());			
+		}//fim do for de montagem da planilhas
+		
+		//escrevendo a saída
+		FileOutputStream saida = new FileOutputStream(file);
+		hssfWorkbook.write(saida);//escreve planilha em arquivo
+		saida.flush();
+		saida.close();
+		
+		System.out.println("Planilha criada");
 
 	}
 
