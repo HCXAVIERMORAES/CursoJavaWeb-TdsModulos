@@ -2,7 +2,7 @@ package modulo16.arquivo;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.util.Iterator;
 
@@ -30,10 +30,10 @@ public class ApachePoiEditando {
 			Row linha = linhaIterator.next();//linha recebe proxima linha. dados da pessoa na linha
 			
 			//pegar o numero total de celulas da planilha
-			int numeroCelulas = linha.getPhysicalNumberOfCells();
+			int numeroCelulas = linha.getPhysicalNumberOfCells(); /*quantidade de celulas*/
 			
 			//criando nova celula na linha
-			Cell cell = linha.createCell(numeroCelulas);
+			Cell cell = linha.createCell(numeroCelulas); 
 			cell.setCellValue("5.487,20");//valor da celua criada em strin	
 			
 		}//fim while linha

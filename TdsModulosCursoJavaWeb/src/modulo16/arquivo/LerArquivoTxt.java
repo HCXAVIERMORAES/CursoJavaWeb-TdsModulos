@@ -62,5 +62,6 @@ public class LerArquivoTxt {
 		} // fim while
 		
 		System.out.println(pessoas);
+		lerArquivo.close();
 	}
 }

@@ -20,7 +20,7 @@ public class ApachePoi2 {
 		FileInputStream entrada = new FileInputStream(new File("C:\\Users\\hphoe\\git"
 				+ "\\repository5\\.git\\TdsModulosCursoJavaWeb\\src\\modulo16\\arquivo_excel.xls"));
 		
-		//prepara a entrada do arquivo para se lido
+		//prepara a entrada do arquivo para ser lido
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(entrada);
 		
 		//pega a 1ª planilha da arquivo excel
