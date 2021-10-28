@@ -11,12 +11,10 @@ import javax.swing.JOptionPane;
 
 import constante.StatusAluno;
 import cursojava.classes.Aluno;
-import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
 import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.excecao.excecaoProcessarNota;
-import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
 

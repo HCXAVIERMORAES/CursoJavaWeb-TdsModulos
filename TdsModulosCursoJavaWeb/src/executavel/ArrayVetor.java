@@ -1,9 +1,5 @@
 package executavel;
 
-import java.util.Iterator;
-
-import javax.swing.JOptionPane;
-
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
 
@@ -113,7 +109,7 @@ public class ArrayVetor {
 			/*nome das disciplinas que estão dentro do arrayAluno, usando um foreach*/
 			for (Disciplina disc : arrayAluno[pos].getDisciplinas()) {//recuperar as disciplinas do arrayAluno,na
 				//posição do aluno, ou seja 1ª posição.
-				int n=0;
+				//int n = 0;
 				System.out.println("o nome da disciplina: "+disc.getDisciplina());	
 				
 				//recuperando notas das disciplinas do aluno
